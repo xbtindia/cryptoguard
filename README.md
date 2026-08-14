@@ -1,161 +1,89 @@
 # CryptoGuard — Wallet Site Firewall
 
-> A browser extension that temporarily blocks all websites except verified crypto wallet sites. Think of it as a **panic button for your browser** — activate it when you're managing crypto, and it auto-disables when you're done.
+A Chrome extension that blocks **all websites by default** and only allows verified official cryptocurrency wallet sites. Think of it as a firewall for your browser that protects you from phishing, fake wallet sites, and crypto scams.
 
----
+## How It Works
 
-## Why CryptoGuard?
-
-Crypto phishing is a **$10B+ problem**. Scammers create fake wallet sites that look identical to the real ones. One wrong click and your assets are gone.
-
-CryptoGuard solves this with a **dead-simple idea**:
-
-- Browse normally by default
-- Tap a timer to enter **Safe Mode** when doing crypto
-- Only official wallet sites load; everything else is blocked
-- Timer expires → back to normal browsing automatically
-
-No blocklists to maintain. No AI to trust. Just a hard allowlist of verified domains.
-
----
-
-## Features
-
-| Feature | Description |
-|---------|-------------|
-| **Safe Mode Timer** | Activate blocking for 5/15/30/60 minutes or custom duration |
-| **Auto-Disable** | Protection turns off automatically when timer expires |
-| **Default Allow** | Normal browsing is never interrupted — only lock down when you need it |
-| **Built-in Allowlist** | Pre-loaded with Trezor, Ledger, MetaMask, Exodus, Electrum, Sparrow, and more |
-| **User Allowlist** | Add your own trusted sites (e.g. block explorers, DEXs) |
-| **Block Counter** | See how many scam/unknown sites were stopped |
-| **Zero Data Collection** | No analytics, no telemetry, no remote servers — everything stays local |
-| **Open Source** | Fully auditable code. No hidden scripts or external dependencies |
-
----
+- **Default Deny**: Every website is blocked unless explicitly allowed.
+- **Built-in Allowlist**: Pre-loaded with official domains for Trezor, Ledger, MetaMask, MyEtherWallet, Exodus, Electrum, Sparrow, and more.
+- **User Allowlist**: Add your own trusted sites via the popup.
+- **Temp Bypass**: Need quick access? Enable a 5-minute temporary bypass.
+- **Block Counter**: See how many malicious/unknown sites have been blocked.
 
 ## Built-in Allowed Sites
 
-| Service | Domains |
-|---------|---------|
-| **Trezor** | `trezor.io`, `suite.trezor.io`, `wallet.trezor.io` |
-| **Ledger** | `ledger.com`, `shop.ledger.com` |
-| **MetaMask** | `metamask.io`, `portfolio.metamask.io` |
-| **MyEtherWallet** | `myetherwallet.com` |
-| **Exodus** | `exodus.com` |
-| **Electrum** | `electrum.org` |
-| **Sparrow** | `sparrowwallet.com` |
-| **BlueWallet** | `bluewallet.io` |
-| **Blockstream** | `blockstream.info` |
-| **Mempool** | `mempool.space` |
-| **GitHub** | `github.com`, `raw.githubusercontent.com` |
-
----
+| Wallet / Service | Domain |
+|-----------------|--------|
+| Trezor | trezor.io, suite.trezor.io, wallet.trezor.io |
+| Ledger | ledger.com, shop.ledger.com |
+| MetaMask | metamask.io, portfolio.metamask.io |
+| MyEtherWallet | myetherwallet.com |
+| Exodus | exodus.com |
+| Electrum | electrum.org |
+| Sparrow | sparrowwallet.com |
+| BlueWallet | bluewallet.io |
+| Blockstream | blockstream.info |
+| Mempool | mempool.space |
+| GitHub | github.com (for firmware/updates) |
 
 ## Installation
 
-### Desktop (Chrome / Edge / Brave / Opera)
+### Desktop (Chrome, Edge, Brave, Opera)
 
-1. Download the latest release ZIP from [Releases](../../releases)
-2. Extract the ZIP to a folder
-3. Open Chrome and go to `chrome://extensions/`
-4. Turn on **Developer mode** (toggle in top-right)
-5. Click **"Load unpacked"** and select the extracted folder
-6. The CryptoGuard icon appears in your toolbar
+1. Download and unzip this extension folder.
+2. Open Chrome and go to `chrome://extensions/`.
+3. Enable **Developer mode** (toggle in top-right).
+4. Click **Load unpacked**.
+5. Select the `crypto-guard-extension` folder.
+6. The extension is now active. Try visiting a random site — it will be blocked.
 
-### Android (Elixir Browser / Yandex Browser)
+### Android (Kiwi Browser)
 
-Chrome for Android does not support extensions. Use **Elixir Browser** (free, Chromium-based):
+Chrome for Android does **not** support extensions natively. Use **Kiwi Browser** instead:
 
-1. Install [Elixir Browser](https://github.com/SF-FLAM/ElixirBrowser) from Github.
-2. Download the latest release ZIP
-3. In Elixir, tap **⋮ → Extensions**
-4. Turn on **Developer mode**
-5. Tap **"Load unpacked"** and select the extracted folder
-6. Open Extension menu and Tap the CryptoGuard icon to open the popup
+1. Install [Kiwi Browser](https://play.google.com/store/apps/details?id=com.kiwibrowser.browser) from the Play Store.
+2. Open Kiwi → tap the **3 dots** → **Extensions**.
+3. Enable **Developer mode**.
+4. Tap **+(from .zip/.crx/.user.js)** or **Load unpacked**.
+5. Select the `crypto-guard-extension` folder (you may need to zip it first).
+6. The extension will run and protect your mobile browsing.
 
-> **Note:** On Android, you must keep Developer Mode ON for unpacked extensions to work. The "Chromium can't verify" warning is normal for all sideloaded extensions.
+> **Note**: On Android, the popup may appear as a full-page panel. All features work identically.
 
----
+## Usage
 
-## Security Model
+- **Green badge** = Protected. All unknown sites are blocked.
+- **Red badge** = Disabled or temp bypass active.
+- Click the extension icon to:
+  - View blocked count and allowed site list
+  - Add new allowed domains
+  - Disable/enable protection
+  - Enable 5-minute temporary bypass
 
-CryptoGuard uses Chrome's **`declarativeNetRequest` API** — blocking happens at the browser's network layer **before any page content loads**. This means:
+## Security Notes
 
-- Phishing pages never render. Not even for a split second.
-- No JavaScript on the blocked page can execute.
-- No cookies, trackers, or malware payloads can download.
+- This extension uses Chrome's `declarativeNetRequest` API — blocking happens at the browser's network layer before any page content loads.
+- No browsing data is collected or sent anywhere. Everything stays local.
+- Built-in domains cannot be removed (to prevent accidental self-lockout).
+- The extension can be disabled by the user at any time — it is a convenience tool, not a jail.
 
-### What CryptoGuard Does NOT Do
+## Files
 
-| It does NOT... | Because... |
-|----------------|------------|
-| Replace your hardware wallet | It's a browser firewall, not a wallet |
-| Protect against fake apps | It only works inside the browser |
-| Stop you from disabling it | You can always turn it off — it's a safety net, not a jail |
-| Submit data anywhere | Zero network requests from the extension itself |
-
-
----
-
-## Development
-
-### Prerequisites
-
-- Chrome or any Chromium-based browser
-- Text editor
-
-### Local Testing
-
-1. Clone or download this repo
-2. Make your changes
-3. Go to `chrome://extensions/` → **Load unpacked** → select the folder
-4. Changes to `background.js` require clicking the **refresh** icon on the extension card
-5. Changes to popup files require closing and reopening the popup
-
-### Building a `.crx` Package
-
-1. Go to `chrome://extensions/`
-2. Turn on **Developer mode**
-3. Click **"Pack extension"**
-4. Browse to the extension folder
-5. Click **"Pack Extension"** — Chrome generates a `.crx` file
-
----
-
-## Privacy
-
-- **No data collection.** Period.
-- No analytics, crash reporting, or remote logging.
-- No external network requests from the extension.
-- All storage is local (`chrome.storage.local`).
-- The allowlist is hardcoded and user-managed only.
-
----
-
-## Contributing
-
-Pull requests are welcome. Focus areas:
-
-- Additional verified wallet sites for the built-in allowlist
-- Better mobile popup UX
-- Translations
-- Bug fixes for edge-case Chromium forks
-
-Please open an issue before submitting major changes.
-
----
+```
+crypto-guard-extension/
+├── manifest.json      # Extension manifest (MV3)
+├── rules.json         # Static block/allow rules
+├── background.js      # Service worker for dynamic rules
+├── popup.html         # Popup UI
+├── popup.css          # Popup styles (dark theme)
+├── popup.js           # Popup logic
+├── blocked.html       # Custom block page
+└── icons/
+    ├── icon16.png
+    ├── icon48.png
+    └── icon128.png
+```
 
 ## License
 
-MIT License — see [LICENSE](LICENSE) for details.
-
-**Use at your own risk.** This is a security tool, not financial advice. Always verify transactions on your hardware wallet screen before confirming.
-
----
-
-## Acknowledgments
-
-- Built with Chrome's [declarativeNetRequest API](https://developer.chrome.com/docs/extensions/reference/api/declarativeNetRequest)
-- Inspired by the need for simple, non-intrusive crypto security tools
-- Icon: shield + lock emoji (no external icon dependencies)
+MIT — Use at your own risk. This is a security tool, not financial advice.

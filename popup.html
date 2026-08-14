@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>CryptoGuard</title>
+  <style>
+    /* Inline critical CSS so popup is visible immediately */
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: #0b0e14;
+      color: #e5e7eb;
+      width: 100%;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+    .container { padding: 16px; max-width: 400px; margin: 0 auto; }
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 14px;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+    .logo { display: flex; align-items: center; gap: 8px; }
+    .shield { font-size: 22px; }
+    h1 { font-size: 17px; font-weight: 700; }
+    .status {
+      display: flex; align-items: center; gap: 6px;
+      font-size: 11px; font-weight: 600;
+      padding: 4px 10px; border-radius: 20px;
+      background: rgba(107,114,128,0.15);
+      color: #9ca3af; border: 1px solid rgba(107,114,128,0.3);
+      white-space: nowrap;
+    }
+    .status.on {
+      background: rgba(16,185,129,0.15);
+      color: #10b981; border-color: rgba(16,185,129,0.3);
+    }
+    .status.timer {
+      background: rgba(245,158,11,0.15);
+      color: #f59e0b; border-color: rgba(245,158,11,0.3);
+    }
+    .dot {
+      width: 7px; height: 7px; border-radius: 50%;
+      background: #9ca3af; flex-shrink: 0;
+    }
+    .status.on .dot { background: #10b981; }
+    .status.timer .dot { background: #f59e0b; }
+    .stats {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 8px;
+      margin-bottom: 14px;
+    }
+    .stat-box {
+      background: #111827; border: 1px solid #374151;
+      border-radius: 10px; padding: 10px; text-align: center;
+    }
+    .stat-number { font-size: 20px; font-weight: 800; color: #10b981; }
+    .stat-label { font-size: 10px; color: #9ca3af; text-transform: uppercase; }
+    .section {
+      background: #111827; border: 1px solid #374151;
+      border-radius: 10px; padding: 12px; margin-bottom: 12px;
+    }
+    .section h3 { font-size: 12px; margin-bottom: 8px; color: #e5e7eb; }
+    .section p { font-size: 11px; color: #9ca3af; margin-bottom: 10px; }
+    .btn-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px;
+    }
+    .btn {
+      background: #1f2937; border: 1px solid #374151;
+      color: #e5e7eb; border-radius: 8px;
+      padding: 10px 4px; font-size: 12px; font-weight: 600;
+      cursor: pointer; text-align: center;
+      touch-action: manipulation;
+    }
+    .btn:active { background: #374151; }
+    .btn-green {
+      background: linear-gradient(135deg, #059669, #10b981);
+      color: white; border: none;
+    }
+    .btn-green:active { opacity: 0.9; }
+    .btn-red {
+      background: rgba(239,68,68,0.1);
+      border: 1px solid rgba(239,68,68,0.3);
+      color: #ef4444;
+    }
+    .timer-display {
+      text-align: center; padding: 10px 0;
+    }
+    .timer-big {
+      font-size: 32px; font-weight: 800; color: #f59e0b;
+      font-variant-numeric: tabular-nums;
+    }
+    .timer-label { font-size: 10px; color: #9ca3af; text-transform: uppercase; }
+    .input-row {
+      display: flex; gap: 6px; margin-top: 8px;
+    }
+    input[type="text"], input[type="number"] {
+      flex: 1; background: #0b0e14; border: 1px solid #374151;
+      border-radius: 8px; padding: 9px 10px;
+      color: #e5e7eb; font-size: 13px;
+    }
+    input:focus { outline: none; border-color: #10b981; }
+    .domain-list {
+      max-height: 160px; overflow-y: auto;
+      border: 1px solid #374151; border-radius: 8px;
+      background: #0b0e14; margin-top: 8px;
+    }
+    .domain-item {
+      display: flex; justify-content: space-between;
+      align-items: center; padding: 8px 10px;
+      border-bottom: 1px solid #374151; font-size: 12px;
+    }
+    .domain-item:last-child { border-bottom: none; }
+    .tag {
+      font-size: 9px; padding: 1px 5px; border-radius: 4px;
+      background: rgba(16,185,129,0.15); color: #10b981;
+      margin-left: 4px;
+    }
+    .tag.user { background: rgba(59,130,246,0.15); color: #60a5fa; }
+    .btn-remove {
+      background: transparent; border: none; color: #ef4444;
+      cursor: pointer; font-size: 16px; padding: 2px 6px;
+    }
+    .footer {
+      text-align: center; border-top: 1px solid #374151;
+      padding-top: 10px; margin-top: 10px;
+    }
+    .footer p { font-size: 10px; color: #6b7280; }
+    .btn-text {
+      background: transparent; border: none; color: #6b7280;
+      font-size: 11px; cursor: pointer; text-decoration: underline;
+    }
+    .error { color: #ef4444; font-size: 11px; margin-top: 4px; }
+    .hidden { display: none !important; }
+  </style>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="logo">
+        <span class="shield">&#128737;</span>
+        <h1>CryptoGuard</h1>
+      </div>
+      <div class="status off" id="statusBadge">
+        <span class="dot"></span>
+        <span id="statusText">Loading...</span>
+      </div>
+    </header>
+
+    <div class="stats">
+      <div class="stat-box">
+        <span class="stat-number" id="blockedCount">-</span>
+        <span class="stat-label">Blocked</span>
+      </div>
+      <div class="stat-box">
+        <span class="stat-number" id="allowedCount">-</span>
+        <span class="stat-label">Allowed</span>
+      </div>
+    </div>
+
+    <!-- Safe Mode Timer -->
+    <div class="section" id="timerSection">
+      <h3>Safe Mode Timer</h3>
+      <p id="timerDesc">Block all sites except wallets for a set time.</p>
+
+      <div id="timerButtons">
+        <div class="btn-grid">
+          <button class="btn" data-min="5">5 min</button>
+          <button class="btn" data-min="15">15 min</button>
+          <button class="btn" data-min="30">30 min</button>
+          <button class="btn" data-min="60">1 hr</button>
+          <button class="btn" data-min="120">2 hr</button>
+          <button class="btn" id="btnCustom">Custom</button>
+        </div>
+        <div class="input-row hidden" id="customRow">
+          <input type="number" id="customMin" min="1" max="480" value="10" placeholder="min">
+          <button class="btn btn-green" id="btnCustomStart" style="flex:0.6">Start</button>
+          <button class="btn" id="btnCustomBack" style="flex:0.4">Back</button>
+        </div>
+      </div>
+
+      <div class="timer-display hidden" id="timerActive">
+        <div class="timer-big" id="timerCountdown">00:00</div>
+        <div class="timer-label">safe mode remaining</div>
+        <button class="btn btn-red" id="btnCancelTimer" style="margin-top:10px;width:100%">
+          End Safe Mode Now
+        </button>
+      </div>
+    </div>
+
+    <!-- Manual Toggle -->
+    <div class="section">
+      <button class="btn btn-green" id="btnToggle" style="width:100%">
+        <span id="toggleIcon">&#128274;</span> <span id="toggleLabel">Enable Safe Mode</span>
+      </button>
+    </div>
+
+    <!-- Add Domain -->
+    <div class="section">
+      <h3>Add Allowed Site</h3>
+      <div class="input-row">
+        <input type="text" id="domainInput" placeholder="e.g. etherscan.io">
+        <button class="btn btn-green" id="btnAdd" style="flex:0.4">Add</button>
+      </div>
+      <div class="error hidden" id="addError"></div>
+    </div>
+
+    <!-- Domain List -->
+    <div class="section">
+      <h3>Allowed Sites</h3>
+      <div class="domain-list" id="domainList">
+        <div class="domain-item" style="color:#6b7280;text-align:center;justify-content:center;">
+          Loading...
+        </div>
+      </div>
+    </div>
+
+    <div class="footer">
+      <p>CryptoGuard v1.2.2 — Crypto wallet firewall</p>
+      <button class="btn-text" id="btnReset">Reset counter</button>
+    </div>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>

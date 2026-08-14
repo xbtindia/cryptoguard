@@ -1,0 +1,330 @@
+[
+  {
+    "id": 1,
+    "priority": 1,
+    "action": {
+      "type": "block"
+    },
+    "condition": {
+      "urlFilter": "*",
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 2,
+    "priority": 100,
+    "action": {
+      "type": "allowAllRequests"
+    },
+    "condition": {
+      "requestDomains": [
+        "trezor.io"
+      ],
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 3,
+    "priority": 100,
+    "action": {
+      "type": "allowAllRequests"
+    },
+    "condition": {
+      "requestDomains": [
+        "suite.trezor.io"
+      ],
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 4,
+    "priority": 100,
+    "action": {
+      "type": "allowAllRequests"
+    },
+    "condition": {
+      "requestDomains": [
+        "wallet.trezor.io"
+      ],
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 5,
+    "priority": 100,
+    "action": {
+      "type": "allowAllRequests"
+    },
+    "condition": {
+      "requestDomains": [
+        "ledger.com"
+      ],
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 6,
+    "priority": 100,
+    "action": {
+      "type": "allowAllRequests"
+    },
+    "condition": {
+      "requestDomains": [
+        "shop.ledger.com"
+      ],
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 7,
+    "priority": 100,
+    "action": {
+      "type": "allowAllRequests"
+    },
+    "condition": {
+      "requestDomains": [
+        "metamask.io"
+      ],
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 8,
+    "priority": 100,
+    "action": {
+      "type": "allowAllRequests"
+    },
+    "condition": {
+      "requestDomains": [
+        "portfolio.metamask.io"
+      ],
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 9,
+    "priority": 100,
+    "action": {
+      "type": "allowAllRequests"
+    },
+    "condition": {
+      "requestDomains": [
+        "myetherwallet.com"
+      ],
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 10,
+    "priority": 100,
+    "action": {
+      "type": "allowAllRequests"
+    },
+    "condition": {
+      "requestDomains": [
+        "www.myetherwallet.com"
+      ],
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 11,
+    "priority": 100,
+    "action": {
+      "type": "allowAllRequests"
+    },
+    "condition": {
+      "requestDomains": [
+        "exodus.com"
+      ],
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 12,
+    "priority": 100,
+    "action": {
+      "type": "allowAllRequests"
+    },
+    "condition": {
+      "requestDomains": [
+        "www.exodus.com"
+      ],
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 13,
+    "priority": 100,
+    "action": {
+      "type": "allowAllRequests"
+    },
+    "condition": {
+      "requestDomains": [
+        "electrum.org"
+      ],
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 14,
+    "priority": 100,
+    "action": {
+      "type": "allowAllRequests"
+    },
+    "condition": {
+      "requestDomains": [
+        "sparrowwallet.com"
+      ],
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 15,
+    "priority": 100,
+    "action": {
+      "type": "allowAllRequests"
+    },
+    "condition": {
+      "requestDomains": [
+        "www.sparrowwallet.com"
+      ],
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 16,
+    "priority": 100,
+    "action": {
+      "type": "allowAllRequests"
+    },
+    "condition": {
+      "requestDomains": [
+        "bluewallet.io"
+      ],
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 17,
+    "priority": 100,
+    "action": {
+      "type": "allowAllRequests"
+    },
+    "condition": {
+      "requestDomains": [
+        "blockstream.info"
+      ],
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 18,
+    "priority": 100,
+    "action": {
+      "type": "allowAllRequests"
+    },
+    "condition": {
+      "requestDomains": [
+        "mempool.space"
+      ],
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 19,
+    "priority": 100,
+    "action": {
+      "type": "allowAllRequests"
+    },
+    "condition": {
+      "requestDomains": [
+        "github.com"
+      ],
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 20,
+    "priority": 100,
+    "action": {
+      "type": "allowAllRequests"
+    },
+    "condition": {
+      "requestDomains": [
+        "raw.githubusercontent.com"
+      ],
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 21,
+    "priority": 100,
+    "action": {
+      "type": "allowAllRequests"
+    },
+    "condition": {
+      "requestDomains": [
+        "chrome.google.com"
+      ],
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 22,
+    "priority": 100,
+    "action": {
+      "type": "allowAllRequests"
+    },
+    "condition": {
+      "requestDomains": [
+        "chromewebstore.google.com"
+      ],
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  }
+]
