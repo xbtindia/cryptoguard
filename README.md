@@ -1,14 +1,15 @@
 # CryptoGuard — Wallet Site Firewall
 
-A Chrome extension that blocks **all websites by default** and only allows verified official cryptocurrency wallet sites. Think of it as a firewall for your browser that protects you from phishing, fake wallet sites, and crypto scams.
+A browser extension that temporarily blocks all websites except verified crypto wallet sites. Activate Safe Mode when managing crypto — it auto-disables when you're done.
 
 ## How It Works
 
-- **Default Deny**: Every website is blocked unless explicitly allowed.
+- **Default Allow**: All websites load normally by default. Browse freely.
+- **Safe Mode Timer**: Tap 5/15/30/60 min (or custom) to temporarily block everything except your crypto wallet allowlist.
 - **Built-in Allowlist**: Pre-loaded with official domains for Trezor, Ledger, MetaMask, MyEtherWallet, Exodus, Electrum, Sparrow, and more.
 - **User Allowlist**: Add your own trusted sites via the popup.
-- **Temp Bypass**: Need quick access? Enable a 5-minute temporary bypass.
-- **Block Counter**: See how many malicious/unknown sites have been blocked.
+- **Auto-Disable**: When the timer expires, protection turns off automatically — back to normal browsing.
+- **Block Counter**: See how many scam/unknown sites were stopped during Safe Mode.
 
 ## Built-in Allowed Sites
 
