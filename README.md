@@ -1,6 +1,6 @@
 # CryptoGuard — Wallet Site Firewall
 
-A browser extension that temporarily blocks all websites except verified crypto wallet sites. Activate Safe Mode when managing crypto — it auto-disables when you're done.
+A browser extension that temporarily blocks all websites except verified crypto wallet sites. Activate Safe Mode when managing crypto, it auto-disables when you're done.
 
 ## How It Works
 
@@ -8,7 +8,7 @@ A browser extension that temporarily blocks all websites except verified crypto 
 - **Safe Mode Timer**: Tap 5/15/30/60 min (or custom) to temporarily block everything except your crypto wallet allowlist.
 - **Built-in Allowlist**: Pre-loaded with official domains for Trezor, Ledger, MetaMask, MyEtherWallet, Exodus, Electrum, Sparrow, and more.
 - **User Allowlist**: Add your own trusted sites via the popup.
-- **Auto-Disable**: When the timer expires, protection turns off automatically — back to normal browsing.
+- **Auto-Disable**: When the timer expires, protection turns off automatically back to normal browsing.
 - **Block Counter**: See how many scam/unknown sites were stopped during Safe Mode.
 
 ## Built-in Allowed Sites
@@ -36,7 +36,7 @@ A browser extension that temporarily blocks all websites except verified crypto 
 3. Enable **Developer mode** (toggle in top-right).
 4. Click **Load unpacked**.
 5. Select the `crypto-guard-extension` folder.
-6. The extension is now active. Try visiting a random site — it will be blocked.
+6. The extension is now active. Try visiting a random site it will be blocked.
 
 ### Android (Kiwi Browser)
 
@@ -63,7 +63,7 @@ Chrome for Android does **not** support extensions natively. Use **Kiwi Browser*
 
 ## Security Notes
 
-- This extension uses Chrome's `declarativeNetRequest` API — blocking happens at the browser's network layer before any page content loads.
+- This extension uses Chrome's `declarativeNetRequest` API blocking happens at the browser's network layer before any page content loads.
 - No browsing data is collected or sent anywhere. Everything stays local.
 - Built-in domains cannot be removed (to prevent accidental self-lockout).
 - The extension can be disabled by the user at any time — it is a convenience tool, not a jail.
