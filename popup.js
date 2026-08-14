@@ -1,5 +1,5 @@
 
-// CryptoGuard Popup v1.2.2 — Bulletproof for Android
+// CryptoGuard Popup v1.2.2 
 
 const BUILT_IN = [
   'trezor.io','suite.trezor.io','wallet.trezor.io',
